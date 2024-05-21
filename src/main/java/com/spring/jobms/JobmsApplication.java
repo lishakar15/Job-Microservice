@@ -10,7 +10,6 @@ public class JobmsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(JobmsApplication.class, args);
 		RestTemplate restTemplate = new RestTemplate();
-		System.out.println("Titans");
 	}
 
 }
