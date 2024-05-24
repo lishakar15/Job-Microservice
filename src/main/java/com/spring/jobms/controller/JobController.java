@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("job")
+@RequestMapping("/job")
 public class JobController {
     @Autowired
     private JobService jobService;
@@ -29,7 +29,7 @@ public class JobController {
     @GetMapping("/healthCheck")
     public String healthCheck()
     {
-        LOGGER.info("Health: Good");
+        LOGGER.info("Health: Good from JOB 1");
         return "Health: good";
     }
     @GetMapping("/getAllJobs")
