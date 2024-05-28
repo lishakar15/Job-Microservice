@@ -26,7 +26,7 @@ public class JobController {
     public ResponseEntity<String> saveAllJobs(@RequestBody List<Job> jobs)
     {
         List<Job> jobList = jobService.saveAllJobs(jobs);
-        if(jobList != null && jobList.isEmpty())
+        if(jobList != null && !jobList.isEmpty())
         {
             //Feign Client to call Company Microservice
             ResponseEntity<String> companyResponse = companyClient.updateJobIdsInCompanyService(jobList);
