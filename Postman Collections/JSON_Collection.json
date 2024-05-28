@@ -1,0 +1,88 @@
+{
+	"info": {
+		"_postman_id": "69a02d77-cee3-42fc-ba5c-c1cb18270b45",
+		"name": "jobms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "saveAllJobs",
+			"id": "ca2384c0-eb60-42e2-8703-30abe6387b5c",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\r\n    \"description\":\"Software Engineer 2\",\r\n    \"companyId\":201\r\n},\r\n{\r\n    \"description\":\"Automation Tester\",\r\n    \"companyId\":201\r\n}\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/job/saveAllJobs"
+			},
+			"response": []
+		},
+		{
+			"name": "Heath Check",
+			"id": "2f115219-b1bd-429a-9508-83709143e107",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/job/healthCheck"
+			},
+			"response": []
+		},
+		{
+			"name": "getAllJobs",
+			"id": "ed50f2d6-bfb8-46b8-b464-4bca6a607b65",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/job/getAllJobs"
+			},
+			"response": []
+		},
+		{
+			"name": "getJobsByIds",
+			"id": "b7c7ce75-ab36-4c50-90e1-b9589d41b0a4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[100,101]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/job/getJobsByIds"
+			},
+			"response": []
+		}
+	]
+}
