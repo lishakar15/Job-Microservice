@@ -2,6 +2,7 @@ package com.spring.jobms.controller;
 
 import com.spring.jobms.client.CompanyClient;
 import com.spring.jobms.entity.Job;
+import com.spring.jobms.rabbitmq.JobMessageProducer;
 import com.spring.jobms.service.JobService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,19 +21,25 @@ public class JobController {
     private JobService jobService;
     @Autowired
     private CompanyClient companyClient;
+    @Autowired
+    public JobMessageProducer jobMessageProducer;
     private Logger  LOGGER = LoggerFactory.getLogger(JobController.class);
 
     @PostMapping("/saveAllJobs")
     public ResponseEntity<String> saveAllJobs(@RequestBody List<Job> jobs)
     {
         List<Job> jobList = jobService.saveAllJobs(jobs);
-        if(jobList != null && !jobList.isEmpty())
+       /* if(jobList != null && !jobList.isEmpty())
         {
             //Feign Client to call Company Microservice
             ResponseEntity<String> companyResponse = companyClient.updateJobIdsInCompanyService(jobList);
             if(companyResponse.getStatusCode().equals(HttpStatus.OK))
                 LOGGER.info("Job details updated successfully to Companies");
-        }
+        }*/
+
+        //Rabbit Message Queue
+        jobMessageProducer.sendJobMessage(jobList);
+
         return new ResponseEntity<>("Saved Successfully",HttpStatus.OK);
     }
     @ResponseStatus(HttpStatus.ACCEPTED)
